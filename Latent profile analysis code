@@ -1,3 +1,5 @@
+This analyses were perfomed on Mplus version 7
+
 DATA: FILE IS C:\Users\gimag\OneDrive\Área de Trabalho\vacina.txt;
     VARIABLE:
     NAMES = Manipulacao
