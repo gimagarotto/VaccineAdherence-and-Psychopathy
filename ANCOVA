@@ -1,0 +1,25 @@
+
+ANCOVAs were performed on SPSS version 23. 
+
+classes with covariables control
+
+DATASET ACTIVATE DataSet1.
+GLM Crencas_Conspiratórias_vacina Anti_vacina Adesão_vacina BY Classes WITH Idade Sexo
+  /METHOD=SSTYPE(3)
+  /INTERCEPT=INCLUDE
+  /EMMEANS=TABLES(Classes) WITH(Idade=MEAN Sexo=MEAN) COMPARE ADJ(BONFERRONI)
+  /PRINT=ETASQ OPOWER PARAMETER
+  /CRITERIA=ALPHA(.05)
+  /DESIGN=Idade Sexo Classes.
+
+
+Classes without covariables control 
+
+
+GLM Crencas_Conspiratórias_vacina Anti_vacina Adesão_vacina BY Classes
+  /METHOD=SSTYPE(3)
+  /INTERCEPT=INCLUDE
+  /EMMEANS=TABLES(Classes) COMPARE ADJ(BONFERRONI)
+  /PRINT=ETASQ OPOWER PARAMETER
+  /CRITERIA=ALPHA(.05)
+  /DESIGN= Classes.
