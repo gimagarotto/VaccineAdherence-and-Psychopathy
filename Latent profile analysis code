@@ -1,0 +1,43 @@
+DATA: FILE IS C:\Users\gimag\OneDrive\Área de Trabalho\vacina.txt;
+    VARIABLE:
+    NAMES = Manipulacao
+Deceitfulness
+Irresponsabilidade
+Impulsividade
+Hostilidade
+Callousness
+Risktake
+Ansiedade
+withdrawal
+BuscaAtencao
+RessAfe;
+
+    MISSING=.;
+
+    USEVARIABLES ARE  Manipulacao
+Deceitfulness
+Irresponsabilidade
+Impulsividade
+Hostilidade
+Callousness
+Risktake
+RessAfe;
+            CLASSES = c(3); !selected the number of profiles to be tested
+            MISSING ARE ALL (999);
+    
+          ANALYSIS:
+            TYPE = MIXTURE;
+            ESTIMATOR IS MLR;
+          STARTS = 100 10;
+           LRTSTARTS = 0 0 100 10
+            ITERATIONS = 10000;
+            CONVERGENCE = 0.001;
+
+           MODEL:
+         Output: standardized;
+         OUTPUT: tech11 tech14;
+
+          SAVEDATA: !!use this comand to save the classifications of the retained solution 
+          file is 3classesTPAS.txt; 
+          save is cprob;
+          format is free;
